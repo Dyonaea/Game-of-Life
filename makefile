@@ -2,10 +2,8 @@ UNAME_S := $(shell uname -s)
 
 
 CC := gcc
-#CFLAGS = -std=c11 -O3 -g -Wall -Wextra -Wpedantic -Wstrict-aliasing
-#CFLAGS += -Wno-pointer-arith -Wno-newline-eof -Wno-unused-parameter -Wno-gnu-statement-expression
-#CFLAGS += -Wno-gnu-compound-literal-initializer -Wno-gnu-zero-variadic-macro-arguments
-#CFLAGS += -Ilib/SDL/include
+CFLAGS = -std=c11 -O3 -g -Wall -Wextra -Wpedantic -Wstrict-aliasing
+CFLAGS += -Ilib/SDL/include
 LDFLAGS = lib/SDL/build/libSDL2.a
 SRC := $(wildcard src/*.c) $(wildcard src/**/*.c)
 OBJ := $(SRC:.c=.o)
