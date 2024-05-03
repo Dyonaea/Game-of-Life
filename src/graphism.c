@@ -1,4 +1,6 @@
-#include "jeuVie.c"
+#include "game.h"
+#include <SDL2/SDL.h>
+#include "graphism.h"
 
 SDL_Texture *Alive(SDL_Renderer *renderer)
 {

@@ -1,16 +1,7 @@
-#include <stdio.h>
+#include "game.h"
 #include <SDL2/SDL.h>
-#include <stdlib.h>
-#include <time.h>
-#include <unistd.h>
 
-#define SIZE 50
 
-typedef struct Game_s
-{
-    int board[SIZE][SIZE];
-    int next_board[SIZE][SIZE];
-} *Game;
 
 Game Init_Board()
 {
