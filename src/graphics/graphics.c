@@ -1,6 +1,7 @@
-#include "game.h"
-#include <SDL2/SDL.h>
-#include "graphism.h"
+#include "../util/util.h"
+#include "../game/game.h"
+#include "graphics.h"
+#include "../event/event.h"
 
 SDL_Texture *Alive(SDL_Renderer *renderer)
 {
@@ -108,6 +109,8 @@ void Init_Window()
     }
 
     int run = 0;
+    int edit = 0;
+    int key_already_pressed = 0;
     while (!run)
     {
         SDL_Event ev;
@@ -118,11 +121,39 @@ void Init_Window()
             case SDL_QUIT:
                 run = 1;
                 break;
+            case SDL_KEYDOWN:
+                if (ev.key.keysym.scancode == SDL_SCANCODE_E)
+                {
+                    if (key_already_pressed == 0)
+                    {
+                        if (edit == 1)
+                        {
+                            edit = 0;
+                        }
+                        else
+                            edit = 1;
+                        key_already_pressed = 1;
+                    }
+                }
+                break;
+
+            case SDL_KEYUP:
+
+                key_already_pressed = 0;
+                break;
+
+            case SDL_BUTTON_LEFT:
+
+                break;
             }
         }
 
         Draw_Board(renderer, game);
-        Next_Move(game);
+        if (edit == 0)
+        {
+            Next_Move(game);
+        }
+
         SDL_RenderPresent(renderer);
 
         SDL_Delay(75);
@@ -132,11 +163,4 @@ void Init_Window()
     SDL_DestroyWindow(window);
     SDL_Quit();
     free(game);
-}
-
-int main()
-{
-    srand(time(NULL));
-    Init_Window();
-    return 0;
 }
