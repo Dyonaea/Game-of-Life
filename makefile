@@ -15,7 +15,7 @@ BIN := bin
 all: dirs libs game
 
 libs:
-	cd lib/SDL && mkdir -p build && cd build && cmake ../../SDL && make .
+	cd lib/SDL && mkdir -p build && cd build && cmake ../../SDL && make
 
 dirs:
 	mkdir -p $(BIN)
@@ -23,7 +23,9 @@ dirs:
 run: all
 	$(BIN)/game
 
-game: $(OBJ)
+
+
+game: $(OBJ) 
 	$(CC) -o $(BIN)/game $^ $(LDFLAGS) -lm
 	 
 

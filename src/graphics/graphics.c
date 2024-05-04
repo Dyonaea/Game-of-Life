@@ -1,4 +1,3 @@
-#include "../util/util.h"
 #include "../game/game.h"
 #include "graphics.h"
 #include "../event/event.h"
